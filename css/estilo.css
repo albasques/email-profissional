@@ -1,9 +1,9 @@
 /* Tema Claro (padrão) */
 :root {
   --fundo: #ffffff;
-  --texto-principal: #1E3A8A;   /* Azul marinho para texto */
-  --destaque: #34D399;          /* Verde para botões/links */
-  --texto-secundario: #374151;  /* Cinza médio */
+  --texto-principal: #1E3A8A;
+  --destaque: #34D399;
+  --texto-secundario: #374151;
   --fundo-header: #1E3A8A;
   --texto-header: #f9fafb;
   --fundo-footer: #1E3A8A;
@@ -12,9 +12,9 @@
 /* Tema Escuro */
 body.escuro {
   --fundo: #111827;
-  --texto-principal: #f9fafb;   /* Branco para texto principal */
-  --destaque: #22c55e;          /* Verde mais vivo */
-  --texto-secundario: #d1d5db;  /* Cinza claro */
+  --texto-principal: #f9fafb;
+  --destaque: #22c55e;
+  --texto-secundario: #d1d5db;
   --fundo-header: #0f172a;
   --texto-header: #e5e7eb;
   --fundo-footer: #0f172a;
@@ -35,13 +35,20 @@ header {
   transition: background 0.5s ease, color 0.5s ease;
 }
 
-nav {
+/* Navbar */
+nav.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-nav ul {
+/* Título */
+nav h1 {
+  font-size: 1.5rem;
+}
+
+/* Menu Desktop */
+nav ul.menu {
   list-style: none;
   display: flex;
   gap: 1rem;
@@ -49,78 +56,29 @@ nav ul {
   padding: 0;
 }
 
-nav a {
-  color: var(--texto);
+nav ul.menu li a {
+  color: var(--texto-header);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-nav a.ativo {
+nav ul.menu li a.ativo {
   color: var(--destaque);
 }
 
-main {
-  padding: 2rem;
-}
-
-.intro img {
-  max-width: 300px;
-  display: block;
-  margin: 1rem auto;
-}
-
-.botao {
-  display: inline-block;
-  background: var(--destaque);
-  padding: 0.8rem 1.2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-}
-
-.questao {
-  margin-bottom: 2rem;
-  padding: 1rem;
-  border: 1px solid var(--texto);
-  border-radius: 8px;
-}
-
-.feedback {
-  margin-top: 0.5rem;
-  font-weight: bold;
-}
-
-/* Pontuação */
-#pontuacao {
-  margin-top: 2rem;
-  padding: 1rem;
-  border: 2px solid var(--destaque);
-  border-radius: 8px;
-  text-align: center;
-  background: var(--fundo);
-}
-
-#valor-pontuacao {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--destaque);
-}
-
-#reiniciar {
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
+/* Botão Hamburger */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
   border: none;
-  border-radius: 6px;
-  background: var(--destaque);
-  color: white;
+  color: var(--texto-header);
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
-#reiniciar:hover {
-  background: white;
-  color: var(--primaria);
-  border: 1px solid var(--primaria);
+.hamburger:hover {
+  transform: scale(1.2);
 }
 
 /* Botão de alternar tema */
@@ -139,6 +97,27 @@ main {
 #alternar-tema:hover {
   background: white;
   color: var(--texto-principal);
+}
+
+/* Main e Footer (sem alteração) */
+main {
+  padding: 2rem;
+}
+
+.intro img {
+  max-width: 300px;
+  display: block;
+  margin: 1rem auto;
+}
+
+.botao {
+  display: inline-block;
+  background: var(--destaque);
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
 }
 
 /* Footer */
@@ -175,13 +154,42 @@ footer {
   transform: scale(1.2);
 }
 
-/* Responsividade */
+/* ------------------- */
+/* Responsividade / Menu Sanduíche */
+/* ------------------- */
 @media (max-width: 768px) {
-  nav ul {
+  /* Menu vira coluna e inicialmente escondido */
+  nav ul.menu {
+    position: absolute;
+    top: 70px; /* abaixo do header */
+    right: 0;
+    background: var(--fundo-header);
     flex-direction: column;
+    width: 200px;
+    display: none;
+    padding: 1rem 0;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
-  nav {
-    flex-direction: column;
-    gap: 1rem;
+
+  nav ul.menu li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  nav ul.menu.show {
+    display: flex;
+  }
+
+  /* Exibe o botão hamburger */
+  .hamburger {
+    display: block;
+  }
+
+  /* Ajuste header e nav */
+  nav.navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
