@@ -6,35 +6,52 @@
 ---
 
 ## Processo Criativo
-Pensei na experiência do usuário como se fosse um curso autoinstrucional.  
-Organizei em três etapas: introdução, guia e exercícios práticos.  
-Mantive layout minimalista e responsivo para celulares, focando em clareza e fácil navegação.  
-Usei micro-feedback (mensagens de correto/incorreto) para estimular o aprendizado ativo.
+O projeto foi pensado como um curso autoinstrucional, dividido em três partes principais:  
+1. **Introdução** — breve apresentação do tema.  
+2. **Guia** — explicação passo a passo para configurar um e-mail profissional.  
+3. **Exercícios** — quiz interativo para fixar o conteúdo.  
+
+O foco foi criar uma experiência simples e fluida, garantindo clareza, acessibilidade e responsividade, principalmente para dispositivos móveis.  
+Além disso, adicionei micro-feedbacks visuais no quiz (mensagens de correto/incorreto), estimulando a interação ativa do usuário.
 
 ---
 
 ## Decisões Técnicas
-- **HTML5 semântico** para acessibilidade.  
-- **CSS com variáveis** para alternância de tema (claro/escuro).  
-- **JavaScript vanilla** para quiz, armazenamento em `localStorage` e interação dinâmica.  
-- Deploy via **GitHub Pages** para simplicidade e gratuidade.  
+- **HTML5 semântico** para melhorar acessibilidade e SEO.  
+- **CSS com variáveis** para alternar entre tema claro e escuro.  
+- **JavaScript Vanilla** para manipulação de DOM, quiz interativo, armazenamento em `localStorage` e integração com API externa.  
+- **Deploy via GitHub Pages** por ser gratuito, rápido e prático.  
 
 ---
 
 ## Uso de IA
-Utilizei IA como apoio para:
-- Acelerar criação do esqueleto do projeto (HTML, CSS, JS).  
-- Ajustar responsividade e refatorar variáveis de tema.  
-Justificativa: economizar tempo em tarefas repetitivas e ganhar sugestões rápidas de boas práticas.  
-Todo o código foi revisado e adaptado manualmente.  
+Foram utilizadas ferramentas de IA como apoio para:  
+- Criar a estrutura inicial de HTML, CSS e JS.  
+- Refatorar variáveis e organizar o código em português.  
+- Sugerir boas práticas de responsividade e contraste.  
+
+**Justificativa:** a IA foi usada como suporte, economizando tempo em tarefas repetitivas e acelerando ajustes técnicos.  
+Todo o código foi revisado, adaptado e testado manualmente.
 
 ---
 
 ## Desafios
-- **Persistência do progresso no quiz**: resolvido com `localStorage`.  
-- **Contraste em tema escuro**: ajustei variáveis de cor para manter boa leitura.  
-- **Deploy estático**: resolvido com GitHub Pages, sem necessidade de backend.  
+- **Persistência de progresso no quiz**: resolvido com uso de `localStorage`.  
+- **Contraste no tema escuro**: ajustes de cores para garantir boa legibilidade.  
+- **Deploy estático**: superado com GitHub Pages, dispensando backend.  
 
 ---
 
 ## Estrutura do Projeto
+
+```plaintext
+email-profissional/
+├── index.html
+├── guia.html
+├── exercicios.html
+├── css/
+│   └── estilo.css
+├── js/
+│   └── script.js
+└── img/
+    └── email.webp
