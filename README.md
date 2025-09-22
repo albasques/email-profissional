@@ -19,19 +19,16 @@ Além disso, adicionei micro-feedbacks visuais no quiz (mensagens de correto/inc
 ## Decisões Técnicas
 - **HTML5 semântico** para melhorar acessibilidade e SEO.  
 - **CSS com variáveis** para alternar entre tema claro e escuro.  
-- **JavaScript Vanilla** para manipulação de DOM, quiz interativo, armazenamento em `localStorage` e integração com API externa.  
+- **JavaScript Vanilla** para manipulação de DOM, quiz interativo, armazenamento em `localStorage`.  
 - **Deploy via GitHub Pages** por ser gratuito, rápido e prático.  
 
 ---
 
 ## Uso de IA
-Foram utilizadas ferramentas de IA como apoio para:  
-- Criar a estrutura inicial de HTML, CSS e JS.  
-- Refatorar variáveis e organizar o código em português.  
-- Sugerir boas práticas de responsividade e contraste.  
+Foram utilizadas ferramentas de Inteligência Artificial como apoio ao desenvolvimento.
+O objetivo principal foi agilizar tarefas repetitivas e facilitar ajustes técnicos, além de organizar o conteúdo de forma mais clara e didática, garantindo que até mesmo um usuário sem conhecimento avançado em programação consiga compreender e utilizar o projeto.
 
-**Justificativa:** a IA foi usada como suporte, economizando tempo em tarefas repetitivas e acelerando ajustes técnicos.  
-Todo o código foi revisado, adaptado e testado manualmente.
+Todo o código foi revisado, adaptado e testado manualmente, assegurando qualidade e funcionamento adequado.
 
 ---
 
@@ -54,4 +51,4 @@ email-profissional/
 ├── js/
 │   └── script.js
 └── img/
-    └── email.webp
+    └── email.png
