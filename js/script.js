@@ -118,4 +118,13 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.reload();
     });
   }
+
+  // Menu sanduíche
+  const btnMenu = document.getElementById("btn-menu");
+  const menu = document.getElementById("menu");
+
+  btnMenu.addEventListener("click", () => {
+    menu.classList.toggle("show");
+  });
+
 });
