@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Profissional - Exercícios</title>
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>E-mail Profissional</h1>
+            <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="guia.html">Guia</a></li>
+            <li><a href="exercicios.html">Exercícios</a></li>
+            </ul>
+        </nav>
+        <button id="alternar-tema">🌙 Alternar Tema</button>
+    </header>
+
+  <main>
+    <section id="quiz">
+      <h2>Teste seus conhecimentos</h2>
+
+      <!-- Questão 1 -->
+      <article class="questao" data-id="q1">
+        <h3>1. Qual é a principal vantagem de um e-mail profissional?</h3>
+        <ul>
+          <li><button data-resposta="0">Ter mais espaço de armazenamento</button></li>
+          <li><button data-resposta="1">Transmitir credibilidade e profissionalismo</button></li>
+          <li><button data-resposta="0">Acessar redes sociais mais rápido</button></li>
+        </ul>
+        <p class="feedback"></p>
+      </article>
+
+      <!-- Questão 2 -->
+      <article class="questao" data-id="q2">
+        <h3>2. Quais registros DNS ajudam na segurança do e-mail?</h3>
+        <ul>
+          <li><button data-resposta="1">SPF</button></li>
+          <li><button data-resposta="1">DKIM</button></li>
+          <li><button data-resposta="0">FTP</button></li>
+        </ul>
+        <p class="feedback"></p>
+      </article>
+
+      <!-- Questão 3 -->
+      <article class="questao" data-id="q3">
+        <h3>3. Onde você configura o domínio do seu e-mail?</h3>
+        <select>
+          <option value="">Selecione</option>
+          <option value="errado">No aplicativo de mensagens</option>
+          <option value="certo">No painel do provedor de hospedagem/domínio</option>
+          <option value="errado">Diretamente no navegador</option>
+        </select>
+        <button class="verificar">Responder</button>
+        <p class="feedback"></p>
+      </article>
+    </section>
+
+    <!-- Pontuação Final -->
+    <section id="pontuacao">
+      <h2>Sua Pontuação</h2>
+      <p id="valor-pontuacao">0</p>
+      <button id="reiniciar">Reiniciar Quiz</button>
+    </section>
+  </main>
+
+  <footer>
+    <div class="conteudo-footer">
+      <p>© 2025 - Curso Autoinstrucional</p>
+      <div class="icones-footer">
+        <span class="icone"><i class="fa-brands fa-github"></i></span>
+        <span class="icone"><i class="fa-brands fa-linkedin"></i></span>
+        <span class="icone"><i class="fa-solid fa-envelope"></i></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
