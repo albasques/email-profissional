@@ -48,36 +48,82 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (concluida && feedback) {
       feedback.textContent = progresso[id].mensagem;
-      questao.querySelectorAll("button, select, .verificar").forEach(el => el.disabled = true);
+      questao.querySelectorAll("input, select, button").forEach(el => el.disabled = true);
     }
 
-    // Questões de múltipla escolha
-    questao.querySelectorAll("button").forEach(botao => {
-      botao.addEventListener("click", () => {
+    const botaoVerificar = questao.querySelector(".verificar");
+
+    // Questão 1 (radio)
+    if (id === "q1" && botaoVerificar) {
+      botaoVerificar.addEventListener("click", () => {
         if (tentativas > 0 && !concluida) {
-          if (botao.dataset.resposta === "1") {
+          const selecionado = questao.querySelector("input[type='radio']:checked");
+          if (!selecionado) {
+            feedback.textContent = "Selecione uma opção.";
+            return;
+          }
+
+          if (selecionado.value === "1") {
             feedback.textContent = "Correto!";
             concluida = true;
-            botao.style.background = "var(--destaque)";
-            questao.querySelectorAll("button").forEach(el => el.disabled = true);
             pontuacao++;
           } else {
             tentativas--;
-            feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. Resposta correta já exibida.";
-            if (tentativas === 0) questao.querySelectorAll("button").forEach(el => el.disabled = true);
+            feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. A resposta era: Transmitir credibilidade e profissionalismo.";
+          }
+
+          if (concluida || tentativas === 0) {
+            questao.querySelectorAll("input, button").forEach(el => el.disabled = true);
           }
 
           progresso[id] = { tentativas, concluida, mensagem: feedback.textContent };
           progresso.pontuacao = pontuacao;
           localStorage.setItem("progressoQuiz", JSON.stringify(progresso));
-          if (valorPontuacao) valorPontuacao.textContent = pontuacao;
+          valorPontuacao.textContent = pontuacao;
         }
       });
-    });
+    }
 
-    // Questões com select + botão "verificar"
-    const botaoVerificar = questao.querySelector(".verificar");
-    if (botaoVerificar) {
+    // Questão 2 (checkbox múltipla resposta correta)
+    if (id === "q2" && botaoVerificar) {
+      botaoVerificar.addEventListener("click", () => {
+        if (tentativas > 0 && !concluida) {
+          const selecionados = Array.from(questao.querySelectorAll("input[type='checkbox']:checked")).map(cb => cb.value);
+
+          if (selecionados.length === 0) {
+            feedback.textContent = "Selecione pelo menos uma opção.";
+            return;
+          }
+
+          // Respostas corretas
+          const corretas = ["SPF", "DKIM"];
+          const incorretas = selecionados.filter(v => !corretas.includes(v));
+
+          if (incorretas.length === 0 && selecionados.length === corretas.length) {
+            feedback.textContent = "Correto!";
+            concluida = true;
+            pontuacao++;
+          } else {
+            tentativas--;
+            feedback.textContent = tentativas > 0 
+              ? "Tente novamente!" 
+              : "Incorreto. As respostas certas são: SPF e DKIM.";
+          }
+
+          if (concluida || tentativas === 0) {
+            questao.querySelectorAll("input, button").forEach(el => el.disabled = true);
+          }
+
+          progresso[id] = { tentativas, concluida, mensagem: feedback.textContent };
+          progresso.pontuacao = pontuacao;
+          localStorage.setItem("progressoQuiz", JSON.stringify(progresso));
+          valorPontuacao.textContent = pontuacao;
+        }
+      });
+    }
+
+    // Questão 3 (select já estava ok)
+    if (id === "q3" && botaoVerificar) {
       botaoVerificar.addEventListener("click", () => {
         const seletor = questao.querySelector("select");
         if (tentativas > 0 && !concluida && seletor) {
@@ -99,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
           progresso[id] = { tentativas, concluida, mensagem: feedback.textContent };
           progresso.pontuacao = pontuacao;
           localStorage.setItem("progressoQuiz", JSON.stringify(progresso));
-          if (valorPontuacao) valorPontuacao.textContent = pontuacao;
+          valorPontuacao.textContent = pontuacao;
         }
       });
     }
