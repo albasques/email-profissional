@@ -7,12 +7,10 @@
   <link rel="stylesheet" href="css/estilo.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
   <script defer src="js/script.js"></script>
 </head>
 <body>
   <header>
-    
     <nav class="navbar">
       <h1>E-mail Profissional</h1>
 
@@ -23,7 +21,7 @@
 
       <ul class="menu" id="menu">
         <li><a href="index.html">Início</a></li>
-        <li><a href="guia.html">Guia</a></li>
+        <li><a href="guia.html" class="ativo">Guia</a></li>
         <li><a href="exercicios.html">Exercícios</a></li>
       </ul>
     </nav>
@@ -32,18 +30,59 @@
   </header>
 
   <main>
-    <section>
-      <h2>Passos para configurar seu e-mail</h2>
-      <ol>
-        <li>Escolha um provedor de hospedagem profissional (ex: Google Workspace, Outlook).</li><br>
-        <li>Registre um domínio personalizado (ex: suaempresa.com.br).</li><br>
-        <li>Crie as contas de e-mail vinculadas ao domínio.</li><br>
-        <li>Configure os registros DNS (MX, SPF, DKIM) no seu provedor.</li><br>
-        <li>Acesse seu cliente de e-mail (webmail ou aplicativo) e configure com usuário/senha.</li><br>
-        <li>Teste o envio e recebimento de mensagens.</li><br>
-      </ol>
+    <section class="guia">
+      <h2>Passo a Passo para Configurar Seu E-mail Profissional</h2>
+
+      <!-- Passo 1 -->
+      <div class="passo">
+        <h3>Passo 1: Escolher um provedor de hospedagem profissional</h3>
+        <p>Escolha um serviço confiável, como Google Workspace ou Microsoft 365.</p>
+        <img class="miniatura" src="img/passo1.png" alt="Tela inicial do provedor de e-mail" data-full="img/passo1.png">
+      </div>
+
+      <!-- Passo 2 -->
+      <div class="passo">
+        <h3>Passo 2: Registrar um domínio personalizado</h3>
+        <p>Escolha um domínio que represente sua empresa, ex: <strong>suaempresa.com.br</strong>.</p>
+        <img class="miniatura" src="img/passo2.png" alt="Exemplo de registro de domínio" data-full="img/passo2.png">
+      </div>
+
+      <!-- Passo 3 -->
+      <div class="passo">
+        <h3>Passo 3: Criar contas de e-mail vinculadas ao domínio</h3>
+        <p>Crie contas como <em>contato@suaempresa.com.br</em> e <em>vendas@suaempresa.com.br</em>.</p>
+        <img class="miniatura" src="img/passo3.png" alt="Criação de contas de e-mail" data-full="img/passo3.png">
+      </div>
+
+      <!-- Passo 4 -->
+      <div class="passo">
+        <h3>Passo 4: Configurar registros DNS (MX, SPF, DKIM)</h3>
+        <p>Configure os registros DNS no painel do provedor de domínio.</p>
+        <img class="miniatura" src="img/passo4.png" alt="Configuração de registros DNS" data-full="img/passo4.png">
+      </div>
+
+      <!-- Passo 5 -->
+      <div class="passo">
+        <h3>Passo 5: Configurar o cliente de e-mail</h3>
+        <p>Acesse seu webmail ou aplicativo e insira seu usuário e senha.</p>
+        <img class="miniatura" src="img/passo5.png" alt="Configuração no cliente de e-mail" data-full="img/passo5.png">
+      </div>
+
+      <!-- Passo 6 -->
+      <div class="passo">
+        <h3>Passo 6: Testar envio e recebimento</h3>
+        <p>Envie mensagens de teste para confirmar que tudo está funcionando corretamente.</p>
+        <img class="miniatura" src="img/passo6.png" alt="Teste de envio e recebimento" data-full="img/passo6.png">
+      </div>
+
+      <a class="botao" href="exercicios.html">Ir para Exercícios</a>
     </section>
-    <a class="botao" href="exercicios.html">Ir para Exercícios</a>
+
+    <!-- Modal -->
+    <div id="modal-imagem" class="modal">
+      <span class="fechar">&times;</span>
+      <img class="modal-conteudo" id="img-modal">
+    </div>
   </main>
 
   <footer>
