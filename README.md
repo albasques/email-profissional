@@ -52,3 +52,11 @@ email-profissional/
 │   └── script.js
 └── img/
     └── email.png
+    └── passo1.png
+    └── passo2.png
+    └── passo3.png
+    └── passo4.png
+    └── passo5.png
+    └── passo6.png
+    └── passo7.png
+
