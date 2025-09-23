@@ -18,7 +18,7 @@ Além disso, adicionei micro-feedbacks visuais no quiz (mensagens de correto/inc
 
 ## Decisões Técnicas
 - **HTML5 semântico** para melhorar acessibilidade e SEO.  
-- **CSS com variáveis** para alternar entre tema claro e escuro.  
+- **CSS com variáveis** para alternar entre tema claro e escuro e ajustes das imagens. 
 - **JavaScript Vanilla** para manipulação de DOM, quiz interativo, armazenamento em `localStorage`.  
 - **Deploy via GitHub Pages** por ser gratuito, rápido e prático.  
 
