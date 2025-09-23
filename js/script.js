@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (localStorage.getItem("tema") === "escuro") document.body.classList.add("escuro");
 
+  // Alternar tema
   if (botaoTema) {
     botaoTema.addEventListener("click", () => {
       document.body.classList.toggle("escuro");
@@ -24,34 +25,32 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
     botaoTema.textContent = document.body.classList.contains("escuro")
-      ? "☀️ Alternar Tema" : "🌙 Alternar Tema";
+      ? "☀️ Alternar Tema"
+      : "🌙 Alternar Tema";
   }
 
-  function marcarRespostaCorreta(questao) {
-    const radiosCorretos = questao.querySelectorAll("input[type='radio'][value='1']");
-    radiosCorretos.forEach(r => {
-      const label = r.closest("label");
-      if (label) label.classList.add("correta");
-    });
-
-    const corretasQ2 = ["HTML", "CSS", "JavaScript"];
-    questao.querySelectorAll("input[type='checkbox']").forEach(cb => {
-      const label = cb.closest("label");
+  // Funções para marcar respostas
+  function marcarRespostaCorreta(questao, corretas = []) {
+    questao.querySelectorAll("input").forEach(input => {
+      const label = input.closest("label");
       if (!label) return;
-      if (corretasQ2.includes(cb.value)) label.classList.add("correta");
+      if (corretas.includes(input.value)) label.classList.add("correta");
     });
   }
 
-  function marcarSelecionadasErradas(questao, valoresSelecionados) {
-    valoresSelecionados.forEach(v => {
-      const input = questao.querySelector(`input[value="${v}"]`);
-      if (input) {
-        const label = input.closest("label");
-        if (label && !label.classList.contains("correta")) label.classList.add("errada");
+  function marcarSelecionadasErradas(questao, selecionados, corretas = []) {
+    selecionados.forEach(v => {
+      if (!corretas.includes(v)) {
+        const input = questao.querySelector(`input[value="${v}"]`);
+        if (input) {
+          const label = input.closest("label");
+          if (label) label.classList.add("errada");
+        }
       }
     });
   }
 
+  // Loop pelas questões
   questoes.forEach(questao => {
     const id = questao.dataset.id;
     const feedback = questao.querySelector(".feedback");
@@ -59,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let concluida = progresso[id]?.concluida ?? false;
     let respostaEscolhida = progresso[id]?.respostaEscolhida ?? null;
 
+    // Restaura seleções anteriores
     if (respostaEscolhida) {
       if (Array.isArray(respostaEscolhida)) {
         respostaEscolhida.forEach(v => {
@@ -71,12 +71,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    // Se já concluída, mostra feedback e destaca respostas
     if (concluida || tentativas === 0) {
       if (feedback) feedback.textContent = progresso[id]?.mensagem || "";
-      marcarRespostaCorreta(questao);
+
+      if (id === "q1") marcarRespostaCorreta(questao, ["1"]);
+      if (id === "q2") marcarRespostaCorreta(questao, ["HTML", "CSS", "JavaScript"]);
+      if (id === "q3") {} // select não precisa de destaque
+
       if (respostaEscolhida) {
         if (Array.isArray(respostaEscolhida)) {
-          marcarSelecionadasErradas(questao, respostaEscolhida);
+          marcarSelecionadasErradas(questao, respostaEscolhida, ["HTML", "CSS", "JavaScript"]);
         } else {
           const sel = questao.querySelector(`input[value="${respostaEscolhida}"]`);
           if (sel) {
@@ -85,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
       }
+
       questao.querySelectorAll("input, select, button").forEach(el => el.disabled = true);
     }
 
@@ -105,17 +111,17 @@ document.addEventListener("DOMContentLoaded", () => {
         respostaEscolhida = selecionado.value;
 
         if (selecionado.value === "1") {
-          if (feedback) feedback.textContent = "Correto! HTML é uma linguagem de marcação.";
+          if (feedback) feedback.textContent = "Correto!";
           concluida = true;
           const lab = selecionado.closest("label");
           if (lab) lab.classList.add("correta");
           pontuacao++;
         } else {
           tentativas--;
-          if (feedback) feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. A resposta correta: Uma linguagem de marcação para estruturar páginas web.";
+          if (feedback) feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. A resposta era: Transmitir credibilidade e profissionalismo.";
           const lab = selecionado.closest("label");
           if (lab) lab.classList.add("errada");
-          if (tentativas === 0) marcarRespostaCorreta(questao);
+          if (tentativas === 0) marcarRespostaCorreta(questao, ["1"]);
         }
 
         if (concluida || tentativas === 0) {
@@ -126,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // --- Q2: checkbox ---
       else if (id === "q2") {
         const selecionados = Array.from(questao.querySelectorAll("input[type='checkbox']:checked")).map(cb => cb.value);
-
         if (selecionados.length === 0) {
           if (feedback) feedback.textContent = "Selecione pelo menos uma opção.";
           return;
@@ -135,18 +140,18 @@ document.addEventListener("DOMContentLoaded", () => {
         respostaEscolhida = selecionados.slice();
 
         const corretas = ["HTML", "CSS", "JavaScript"];
-        const incorretas = selecionados.filter(v => !corretas.includes(v));
         const todasCorretasSelecionadas = corretas.every(c => selecionados.includes(c)) && selecionados.length === corretas.length;
 
         if (todasCorretasSelecionadas) {
           if (feedback) feedback.textContent = "Correto!";
           concluida = true;
           pontuacao++;
+          marcarRespostaCorreta(questao, corretas);
         } else {
           tentativas--;
           if (feedback) feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. As respostas certas são: HTML, CSS e JavaScript.";
-          marcarSelecionadasErradas(questao, selecionados);
-          if (tentativas === 0) marcarRespostaCorreta(questao);
+          marcarSelecionadasErradas(questao, selecionados, corretas);
+          if (tentativas === 0) marcarRespostaCorreta(questao, corretas);
         }
 
         if (concluida || tentativas === 0) {
@@ -160,14 +165,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!seletor) return;
 
         if (seletor.value === "certo") {
-          if (feedback) feedback.textContent = "Correto! CSS define o estilo visual e layout.";
+          if (feedback) feedback.textContent = "Correto!";
           concluida = true;
           seletor.disabled = true;
           botaoVerificar.disabled = true;
           pontuacao++;
         } else {
           tentativas--;
-          if (feedback) feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. Resposta correta: Definir o estilo visual e layout da página.";
+          if (feedback) feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. Resposta: No painel do provedor.";
           if (tentativas === 0) {
             seletor.disabled = true;
             botaoVerificar.disabled = true;
@@ -175,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // Salva progresso
+      // Salva estado
       progresso[id] = { tentativas, concluida, mensagem: feedback ? feedback.textContent : "", respostaEscolhida };
       progresso.pontuacao = pontuacao;
       localStorage.setItem("progressoQuiz", JSON.stringify(progresso));

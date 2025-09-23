@@ -155,7 +155,7 @@ footer {
 }
 
 /* Alternativa correta */
-label.correta {
+label.correta{
   background: rgba(52, 211, 153, 0.2);
   border-left: 4px solid var(--destaque);
   padding-left: 0.6rem;
