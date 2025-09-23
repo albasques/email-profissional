@@ -5,39 +5,91 @@
 
 ---
 
-## Processo Criativo
-O projeto foi pensado como um curso autoinstrucional, dividido em três partes principais:  
-1. **Introdução** — breve apresentação do tema.  
-2. **Guia** — explicação passo a passo para configurar um e-mail profissional.  
-3. **Exercícios** — quiz interativo para fixar o conteúdo.  
+# Curso de E-mail Profissional
 
-O foco foi criar uma experiência simples e fluida, garantindo clareza, acessibilidade e responsividade, principalmente para dispositivos móveis.  
-Além disso, adicionei micro-feedbacks visuais no quiz (mensagens de correto/incorreto), estimulando a interação ativa do usuário.
+Bem-vindo(a) ao **Curso de E-mail Profissional**!  
+Este projeto foi desenvolvido para ensinar, de forma simples e prática, como configurar e utilizar um e-mail profissional.  
+
+Mesmo que você nunca tenha configurado um e-mail antes, poderá acompanhar e interagir com todo o conteúdo.
+
+---
+
+## Processo Criativo
+
+O projeto foi pensado como um **curso autoinstrucional**, dividido em três partes principais:
+
+1. **Introdução** — apresenta o tema e explica a importância de ter um e-mail profissional.  
+2. **Guia** — passo a passo para configurar o e-mail, com imagens e exemplos claros.  
+3. **Exercícios (Quiz Interativo)** — permite testar o conhecimento, com feedback imediato e pontuação que é salva no navegador.
+
+O foco foi criar uma **experiência simples, clara e fluida**, garantindo acessibilidade, responsividade e uma navegação intuitiva.  
+No quiz, micro-feedbacks visuais mostram se a resposta está correta ou incorreta, estimulando a interação ativa do usuário.
 
 ---
 
 ## Decisões Técnicas
-- **HTML5 semântico** para melhorar acessibilidade e SEO.  
-- **CSS com variáveis** para alternar entre tema claro e escuro e ajustes das imagens. 
-- **JavaScript Vanilla** para manipulação de DOM, quiz interativo, armazenamento em `localStorage`.  
-- **Deploy via GitHub Pages** por ser gratuito, rápido e prático.  
+
+O projeto foi construído com tecnologias simples e acessíveis, para que qualquer pessoa consiga usar e compreender:
+
+- **HTML5 semântico**: organiza o conteúdo de forma clara, melhora a acessibilidade e ajuda no SEO.  
+- **CSS com variáveis**: permite alternar entre tema claro e escuro, controlar cores e ajustar imagens automaticamente ao tamanho da tela.  
+- **JavaScript Vanilla**: adiciona interatividade, permite responder o quiz, receber feedback imediato e salvar o progresso no navegador com `localStorage`.  
+- **Deploy via GitHub Pages**: hospeda o curso de forma gratuita, rápida e sem necessidade de servidor.
 
 ---
 
-## Uso de IA
-Foram utilizadas ferramentas de Inteligência Artificial como apoio ao desenvolvimento.
-O objetivo principal foi agilizar tarefas repetitivas e facilitar ajustes técnicos, além de organizar o conteúdo de forma mais clara e didática, garantindo que até mesmo um usuário sem conhecimento avançado em programação consiga compreender e utilizar o projeto.
+## Uso de Inteligência Artificial
 
-Todo o código foi revisado, adaptado e testado manualmente, assegurando qualidade e funcionamento adequado.
+Durante o desenvolvimento, foram utilizadas ferramentas de **IA como suporte** para:
+
+- Organizar o conteúdo de forma mais clara e didática.  
+- Agilizar tarefas repetitivas e ajustes técnicos no código.  
+- Criar exemplos e estruturas de quiz de forma eficiente.
+
+Apesar disso, **todo o código foi revisado, adaptado e testado manualmente**, garantindo qualidade, funcionalidade e confiabilidade.
+
+---
+
+## Desafios Enfrentados
+
+Durante o desenvolvimento, alguns desafios precisaram ser superados:
+
+- **Persistência do progresso do quiz**: resolvido com `localStorage`, permitindo que o usuário continue de onde parou.  
+- **Contraste no tema escuro**: ajuste das cores para garantir boa legibilidade e conforto visual.  
+- **Responsividade e imagens**: imagens do guia ajustam-se automaticamente ao tamanho da tela, mantendo proporção e legibilidade.  
+- **Deploy estático**: hospedagem via GitHub Pages, dispensando backend e tornando o acesso fácil para qualquer usuário.
 
 ---
 
-## Desafios
-- **Persistência de progresso no quiz**: resolvido com uso de `localStorage`.  
-- **Contraste no tema escuro**: ajustes de cores para garantir boa legibilidade.  
-- **Deploy estático**: superado com GitHub Pages, dispensando backend.  
+## Como o Curso Funciona
+
+1. Navegue pelo conteúdo usando o menu superior.  
+2. Alterne entre **tema claro e escuro** para facilitar a leitura.  
+3. Siga o guia passo a passo para configurar seu e-mail profissional.  
+4. Faça o quiz interativo:  
+   - Questões de **múltipla escolha (radio)**: escolha apenas uma opção.  
+   - Questões de **múltipla resposta (checkbox)**: escolha todas as respostas corretas.  
+   - Questões com **menu (select)**: escolha a opção correta da lista.  
+5. Receba feedback imediato e acompanhe sua pontuação.  
+6. Clique em **"Reiniciar Quiz"** para começar novamente se desejar.
 
 ---
+
+## Por que este projeto é útil
+
+- Ensina de forma prática como configurar um e-mail profissional.  
+- Permite aprender de maneira autônoma, sem depender de instrutores.  
+- Mistura teoria com prática através do quiz interativo.  
+- Funciona em qualquer dispositivo (computador, tablet, celular).  
+- Cria experiência intuitiva, clara e didática para qualquer usuário.
+
+---
+
+## Observações Finais
+
+O projeto foi construído para **ser simples, intuitivo e de fácil entendimento**, mesmo para quem não tem experiência técnica.  
+Todo o conteúdo, quiz e feedbacks foram projetados para que você aprenda de forma ativa e prática, consolidando o conhecimento adquirido.
+
 
 ## Estrutura do Projeto
 
