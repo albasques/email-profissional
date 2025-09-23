@@ -28,59 +28,41 @@
 
   <main>
     <section id="quiz">
-      <h2>Teste seus conhecimentos</h2>
+      <h2>Teste seus conhecimentos sobre Front-End</h2>
 
       <!-- Questão 1 (radio) -->
       <article class="questao" data-id="q1">
-        <h3>1. Qual é a principal vantagem de um e-mail profissional?</h3>
-        <label>
-          <input type="radio" name="q1" value="0">
-          Ter mais espaço de armazenamento
-        </label><br>
-        <label>
-          <input type="radio" name="q1" value="1">
-          Transmitir credibilidade e profissionalismo
-        </label><br>
-        <label>
-          <input type="radio" name="q1" value="0">
-          Acessar redes sociais mais rápido
-        </label><br>
+        <h3>1. O que é HTML?</h3>
+        <label><input type="radio" name="q1" value="0"> Uma linguagem de programação</label><br>
+        <label><input type="radio" name="q1" value="1"> Uma linguagem de marcação para estruturar páginas web</label><br>
+        <label><input type="radio" name="q1" value="0"> Um framework de design</label><br>
         <button class="verificar">Responder</button>
         <p class="feedback"></p>
       </article>
 
       <!-- Questão 2 (checkbox) -->
       <article class="questao" data-id="q2">
-        <h3>2. Quais registros DNS ajudam na segurança do e-mail?</h3>
-        <label>
-          <input type="checkbox" name="q2" value="SPF">
-          SPF
-        </label><br>
-        <label>
-          <input type="checkbox" name="q2" value="DKIM">
-          DKIM
-        </label><br>
-        <label>
-          <input type="checkbox" name="q2" value="FTP">
-          FTP
-        </label><br>
+        <h3>2. Quais são linguagens usadas no front-end?</h3>
+        <label><input type="checkbox" name="q2" value="HTML"> HTML</label><br>
+        <label><input type="checkbox" name="q2" value="CSS"> CSS</label><br>
+        <label><input type="checkbox" name="q2" value="Python"> Python</label><br>
+        <label><input type="checkbox" name="q2" value="JavaScript"> JavaScript</label><br>
         <button class="verificar">Responder</button>
         <p class="feedback"></p>
       </article>
 
-      <!-- Questão 3 (select já estava ok) -->
+      <!-- Questão 3 (select) -->
       <article class="questao" data-id="q3">
-        <h3>3. Onde você configura o domínio do seu e-mail?</h3>
+        <h3>3. Qual é a função do CSS?</h3>
         <select>
           <option value="">Selecione</option>
-          <option value="errado">No aplicativo de mensagens</option>
-          <option value="certo">No painel do provedor de hospedagem/domínio</option>
-          <option value="errado">Diretamente no navegador</option>
+          <option value="errado">Estruturar o conteúdo da página</option>
+          <option value="certo">Definir o estilo visual e layout da página</option>
+          <option value="errado">Programar funcionalidades do site</option>
         </select>
         <button class="verificar">Responder</button>
         <p class="feedback"></p>
       </article>
-    </section>
 
     <!-- Pontuação Final -->
     <section id="pontuacao">
