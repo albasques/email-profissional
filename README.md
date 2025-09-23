@@ -1,7 +1,7 @@
 # Como Configurar uma Conta de E-mail Profissional
 
-**Repositório:** https://github.com/albasques/email-profissional  
-**Demo Online:** https://albasques.github.io/email-profissional/
+**URL do repositório Git** https://github.com/albasques/email-profissional  
+**URL pública da aplicação** https://albasques.github.io/email-profissional/
 
 ---
 
