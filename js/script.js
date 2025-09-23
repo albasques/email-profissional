@@ -27,16 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
       ? "☀️ Alternar Tema" : "🌙 Alternar Tema";
   }
 
-  // Helpers para destacar alternativas
   function marcarRespostaCorreta(questao) {
-    // marca radio com value="1" (Q1) e checkboxes corretos (SPF, DKIM) para Q2
     const radiosCorretos = questao.querySelectorAll("input[type='radio'][value='1']");
     radiosCorretos.forEach(r => {
       const label = r.closest("label");
       if (label) label.classList.add("correta");
     });
 
-    const corretasQ2 = ["SPF", "DKIM"];
+    const corretasQ2 = ["HTML", "CSS", "JavaScript"];
     questao.querySelectorAll("input[type='checkbox']").forEach(cb => {
       const label = cb.closest("label");
       if (!label) return;
@@ -54,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Processo por questão
   questoes.forEach(questao => {
     const id = questao.dataset.id;
     const feedback = questao.querySelector(".feedback");
@@ -62,10 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let concluida = progresso[id]?.concluida ?? false;
     let respostaEscolhida = progresso[id]?.respostaEscolhida ?? null;
 
-    // Restaura seleção salva (se houver)
     if (respostaEscolhida) {
       if (Array.isArray(respostaEscolhida)) {
-        // checkboxes
         respostaEscolhida.forEach(v => {
           const input = questao.querySelector(`input[value="${v}"]`);
           if (input) input.checked = true;
@@ -76,12 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Se já foi concluída ou sem tentativas, mostra mensagem e destaca correta
     if (concluida || tentativas === 0) {
       if (feedback) feedback.textContent = progresso[id]?.mensagem || "";
       marcarRespostaCorreta(questao);
-
-      // se houver resposta escolhida salva e ela não é correta, marque como errada
       if (respostaEscolhida) {
         if (Array.isArray(respostaEscolhida)) {
           marcarSelecionadasErradas(questao, respostaEscolhida);
@@ -93,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
       }
-
       questao.querySelectorAll("input, select, button").forEach(el => el.disabled = true);
     }
 
@@ -101,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!botaoVerificar) return;
 
     botaoVerificar.addEventListener("click", () => {
-      // Proteção
       if (!(tentativas > 0 && !concluida)) return;
 
       // --- Q1: radio ---
@@ -115,20 +105,17 @@ document.addEventListener("DOMContentLoaded", () => {
         respostaEscolhida = selecionado.value;
 
         if (selecionado.value === "1") {
-          if (feedback) feedback.textContent = "Correto!";
+          if (feedback) feedback.textContent = "Correto! HTML é uma linguagem de marcação.";
           concluida = true;
-          // destaca selecionada
           const lab = selecionado.closest("label");
           if (lab) lab.classList.add("correta");
           pontuacao++;
         } else {
           tentativas--;
-          if (feedback) feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. A resposta era: Transmitir credibilidade e profissionalismo.";
+          if (feedback) feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. A resposta correta: Uma linguagem de marcação para estruturar páginas web.";
           const lab = selecionado.closest("label");
           if (lab) lab.classList.add("errada");
-          if (tentativas === 0) {
-            marcarRespostaCorreta(questao);
-          }
+          if (tentativas === 0) marcarRespostaCorreta(questao);
         }
 
         if (concluida || tentativas === 0) {
@@ -136,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // --- Q2: checkbox (múltiplas corretas: SPF e DKIM) ---
+      // --- Q2: checkbox ---
       else if (id === "q2") {
         const selecionados = Array.from(questao.querySelectorAll("input[type='checkbox']:checked")).map(cb => cb.value);
 
@@ -145,9 +132,9 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        respostaEscolhida = selecionados.slice(); // salva array
+        respostaEscolhida = selecionados.slice();
 
-        const corretas = ["SPF", "DKIM"];
+        const corretas = ["HTML", "CSS", "JavaScript"];
         const incorretas = selecionados.filter(v => !corretas.includes(v));
         const todasCorretasSelecionadas = corretas.every(c => selecionados.includes(c)) && selecionados.length === corretas.length;
 
@@ -157,12 +144,9 @@ document.addEventListener("DOMContentLoaded", () => {
           pontuacao++;
         } else {
           tentativas--;
-          if (feedback) feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. As respostas certas são: SPF e DKIM.";
-          // marca incorretas selecionadas
+          if (feedback) feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. As respostas certas são: HTML, CSS e JavaScript.";
           marcarSelecionadasErradas(questao, selecionados);
-          if (tentativas === 0) {
-            marcarRespostaCorreta(questao);
-          }
+          if (tentativas === 0) marcarRespostaCorreta(questao);
         }
 
         if (concluida || tentativas === 0) {
@@ -170,20 +154,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // --- Q3: select (mantive sua lógica) ---
+      // --- Q3: select ---
       else if (id === "q3") {
         const seletor = questao.querySelector("select");
         if (!seletor) return;
 
         if (seletor.value === "certo") {
-          if (feedback) feedback.textContent = "Correto!";
+          if (feedback) feedback.textContent = "Correto! CSS define o estilo visual e layout.";
           concluida = true;
           seletor.disabled = true;
           botaoVerificar.disabled = true;
           pontuacao++;
         } else {
           tentativas--;
-          if (feedback) feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. Resposta: No painel do provedor.";
+          if (feedback) feedback.textContent = tentativas > 0 ? "Tente novamente!" : "Incorreto. Resposta correta: Definir o estilo visual e layout da página.";
           if (tentativas === 0) {
             seletor.disabled = true;
             botaoVerificar.disabled = true;
@@ -191,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // Salva estado
+      // Salva progresso
       progresso[id] = { tentativas, concluida, mensagem: feedback ? feedback.textContent : "", respostaEscolhida };
       progresso.pontuacao = pontuacao;
       localStorage.setItem("progressoQuiz", JSON.stringify(progresso));
