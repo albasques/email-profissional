@@ -173,9 +173,18 @@ input[type="radio"], input[type="checkbox"] {
   margin-right: 0.5rem;
 }
 
-/* ------------------- */
-/* Responsividade / Menu Sanduíche */
-/* ------------------- */
+.guia .passo img {
+  max-width: 100%;   
+  height: auto;    
+  display: block; 
+  margin: 10px auto; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15); 
+}
+
+
+/* Responsividade */
+
 @media (max-width: 768px) {
   /* Menu vira coluna e inicialmente escondido */
   nav ul.menu {
@@ -210,5 +219,9 @@ input[type="radio"], input[type="checkbox"] {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .guia .passo img {
+    margin: 15px auto;
   }
 }
